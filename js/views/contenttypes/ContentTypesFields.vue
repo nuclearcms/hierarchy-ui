@@ -61,9 +61,8 @@
 </template>
 
 <script>
-import {View, Shower, Tabs, Datable, DatableDropdown, format_date, RequiresPermissions} from 'umomega-foundation'
+import {View, Shower, Tabs, Datable, DatableDropdown, format_date, RequiresPermissions, assess_error} from 'umomega-foundation'
 import draggable from 'vuedraggable'
-import {assess_error} from 'umomega-foundation'
 
 export default {
 	mixins: [ View, Shower, RequiresPermissions ],
