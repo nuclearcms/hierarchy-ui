@@ -1,0 +1,37 @@
+{
+    "name": "nuclear-hierarchy-ui",
+    "version": "1.0.1",
+    "description": "Hierarchy UI Components For the Nuclear CMS",
+    "sass": "hierarchy-ui.sass",
+    "main": "hierarchy-ui.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nuclearcms/hierarchy-ui.git"
+    },
+    "keywords": [
+        "nuclearcms",
+        "umomega",
+        "ui",
+        "Hierarchy",
+        "front-end",
+        "js"
+    ],
+    "tagsor": {
+        "name": "Egemen Berker Kızılcan",
+        "email": "egemen@umomega.com",
+        "url": "https://umomega.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/nuclearcms/hierarchy-ui/issues"
+    },
+    "homepage": "https://github.com/nuclearcms/hierarchy-ui#readme",
+    "files": [
+        "js",
+        "LICENSE",
+        "README.md",
+        "hierarchy-ui.sass",
+        "hierarchy-ui.js"
+    ],
+    "dependencies": {}
+}
