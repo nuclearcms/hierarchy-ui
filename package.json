@@ -1,6 +1,6 @@
 {
     "name": "nuclear-hierarchy-ui",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Hierarchy UI Components For the Nuclear CMS",
     "sass": "hierarchy-ui.sass",
     "main": "hierarchy-ui.js",
@@ -16,7 +16,7 @@
         "front-end",
         "js"
     ],
-    "tagsor": {
+    "author": {
         "name": "Egemen Berker Kızılcan",
         "email": "egemen@umomega.com",
         "url": "https://umomega.com"
