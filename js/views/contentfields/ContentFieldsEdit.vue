@@ -39,7 +39,7 @@ export default {
 		],
 		guardedBy: 'read_contenttypes',
 		showRoute: 'contenttypes/' + this.$route.params.parent + '/fields',
-		form: new Form({label: '', description: '', search_priority: 0, visible: true, rules: '', default_value: '', options: ''}),
+		form: new Form({label: '', description: '', search_priority: 0, is_visible: true, rules: '', default_value: '', options: ''}),
 		schema: [
 			{
 				type: 'TextField',
@@ -63,7 +63,7 @@ export default {
 				},
 				{
 					type: 'CheckboxField',
-					name: 'visible',
+					name: 'is_visible',
 					label: this.$root.trans.get('validation.attributes.visible'),
 					options: { required: true }
 				}

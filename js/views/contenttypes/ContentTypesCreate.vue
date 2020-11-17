@@ -26,7 +26,7 @@ export default {
 			{to: { name: 'contenttypes.index'}, text: this.$root.trans.get('hierarchy::contenttypes.multiple')}
 		],
 		guardedBy: 'write_contenttypes',
-		form: new Form({name: '', visible: true, hides_children: false, color: {hex: '#00249C'}, taggable: true, allowed_children_types: []}),
+		form: new Form({name: '', is_visible: true, hides_children: false, color: {hex: '#00249C'}, is_taggable: true, allowed_children_types: []}),
 		schema: [
 			{
 				type: 'TextField',
@@ -43,7 +43,7 @@ export default {
 				},
 				{
 					type: 'CheckboxField',
-					name: 'visible',
+					name: 'is_visible',
 					label: this.$root.trans.get('validation.attributes.visible'),
 					options: {required: true}
 				},
@@ -55,7 +55,7 @@ export default {
 				},
 				{
 					type: 'CheckboxField',
-					name: 'taggable',
+					name: 'is_taggable',
 					label: this.$root.trans.get('validation.attributes.taggable'),
 					options: {required: true}
 				},

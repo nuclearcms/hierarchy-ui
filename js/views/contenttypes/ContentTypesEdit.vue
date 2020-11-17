@@ -38,7 +38,7 @@ export default {
 		],
 		guardedBy: 'read_contenttypes',
 		showRoute: 'contenttypes',
-		form: new Form({name: '', visible: false, hides_children: false, color: {hex: '#00249C'}, taggable: false, allowed_children_types: []}),
+		form: new Form({name: '', is_visible: false, hides_children: false, color: {hex: '#00249C'}, is_taggable: false, allowed_children_types: []}),
 		schema: [
 			{
 				type: 'TextField',
@@ -55,7 +55,7 @@ export default {
 				},
 				{
 					type: 'CheckboxField',
-					name: 'visible',
+					name: 'is_visible',
 					label: this.$root.trans.get('validation.attributes.visible'),
 					options: {required: true}
 				},
@@ -67,7 +67,7 @@ export default {
 				},
 				{
 					type: 'CheckboxField',
-					name: 'taggable',
+					name: 'is_taggable',
 					label: this.$root.trans.get('validation.attributes.taggable'),
 					options: {required: true}
 				},

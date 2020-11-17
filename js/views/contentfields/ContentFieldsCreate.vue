@@ -27,7 +27,7 @@ export default {
 		],
 		guardedBy: 'write_contenttypes',
 		showRoute: 'contenttypes',
-		form: new Form({name: '', label: '', type: '', description: '', search_priority: 0, visible: true, rules: '', default_value: '', options: ''}),
+		form: new Form({name: '', label: '', type: '', description: '', search_priority: 0, is_visible: true, rules: '', default_value: '', options: ''}),
 		preventPopulateForm: true,
 		schema: [
 			{
@@ -82,7 +82,7 @@ export default {
 				},
 				{
 					type: 'CheckboxField',
-					name: 'visible',
+					name: 'is_visible',
 					label: this.$root.trans.get('validation.attributes.visible'),
 					options: { required: true }
 				}
