@@ -64,19 +64,19 @@ export default {
 				{
 					type: 'CheckboxField',
 					name: 'is_visible',
-					label: this.$root.trans.get('validation.attributes.visible'),
+					label: this.$root.trans.get('validation.attributes.is_visible'),
 					options: { required: true }
 				}
 			],
 			{
-				type: 'TextareaField',
+				type: 'TextField',
 				name: 'rules',
 				label: this.$root.trans.get('validation.attributes.rules'),
 				options: {},
 				hint: this.$root.trans.get('hierarchy::contentfields.hint_rules')
 			},
 			{
-				type: 'TextareaField',
+				type: 'TextField',
 				name: 'default_value',
 				label: this.$root.trans.get('validation.attributes.default_value'),
 				options: {},
