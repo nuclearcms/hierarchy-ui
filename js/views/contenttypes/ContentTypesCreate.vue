@@ -44,7 +44,7 @@ export default {
 				{
 					type: 'CheckboxField',
 					name: 'is_visible',
-					label: this.$root.trans.get('validation.attributes.visible'),
+					label: this.$root.trans.get('validation.attributes.is_visible'),
 					options: {required: true}
 				},
 				{
@@ -56,7 +56,7 @@ export default {
 				{
 					type: 'CheckboxField',
 					name: 'is_taggable',
-					label: this.$root.trans.get('validation.attributes.taggable'),
+					label: this.$root.trans.get('validation.attributes.is_taggable'),
 					options: {required: true}
 				},
 			],
