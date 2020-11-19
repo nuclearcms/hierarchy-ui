@@ -14,6 +14,7 @@
 				<div class="paper__main">
 					<div class="relation-field">
 						<draggable v-if="$can('write_contenttypes')" :tag="'ul'" v-model="fields" @end="saveSortedFields" :animate="200" handle=".handle">
+							<p class="pt-xxl pb-xxl pl-md pr-md has-text-centered" v-if="fields.length == 0" v-text="trans.get('hierarchy::contenttypes.no_fields_found')"></p>
 							<li class="related-item related-item--handled" v-for="(field, i) in fields" :key="field.id">
 								<span class="handle icon is-medium has-color-blue">
 									<i class="fas fa-grip-lines"></i>
@@ -40,7 +41,8 @@
 							</li>
 						</draggable>
 						<ul v-else>
-							<li class="related-item related-item--handled" v-for="(field, i) in fields" :key="field.id">
+							<p class="pt-xxl pb-xxl pl-md pr-md has-text-centered" v-if="fields.length == 0" v-text="trans.get('hierarchy::contenttypes.no_fields_found')"></p>
+							<li class="related-item related-item--handled" v-if="fields.length > 0" v-for="(field, i) in fields" :key="field.id">
 								<router-link :to="{ name: 'contentfields.edit', params: {parent: field.content_type_id, id: field.id} }">{{ field.label }}</router-link> <span class="has-color-grey-darker">[{{ trans.get('hierarchy::contentfields.' + field.type) }}]</span>
 							</li>
 						</ul>
