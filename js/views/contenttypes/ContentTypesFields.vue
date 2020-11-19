@@ -6,7 +6,8 @@
 
 		<tabs class="is-marginless" :tabs="[
 			{route: 'contenttypes.edit', label: 'hierarchy::contenttypes.single', active: false},
-			{route: 'contenttypes.fields', label: 'hierarchy::contentfields.multiple', active: true}
+			{route: 'contenttypes.fields', label: 'hierarchy::contentfields.multiple', active: true},
+			{route: 'contenttypes.contents', label: 'hierarchy::contents.multiple', active: false}
 		]"></tabs>
 
 		<div class="paper">
@@ -111,7 +112,6 @@ export default {
 		openDeleteModal(payload) {
 			Event.$emit('delete-modal-open', payload)
 		}
-	},
-
+	}
 }
 </script>

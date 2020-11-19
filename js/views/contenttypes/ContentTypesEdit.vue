@@ -6,7 +6,8 @@
 		
 		<tabs class="is-marginless" :tabs="[
 			{route: 'contenttypes.edit', label: 'hierarchy::contenttypes.single', active: true},
-			{route: 'contenttypes.fields', label: 'hierarchy::contentfields.multiple', active: false}
+			{route: 'contenttypes.fields', label: 'hierarchy::contentfields.multiple', active: false},
+			{route: 'contenttypes.contents', label: 'hierarchy::contents.multiple', active: false}
 		]"></tabs>
 
 		<div class="paper">
