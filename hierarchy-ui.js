@@ -24,7 +24,7 @@ import ContentTransformed from './js/events/ContentTransformed'
 import ContentTranslated from './js/events/ContentTranslated'
 import ContentTranslationDestroyed from './js/events/ContentTranslationDestroyed'
 import ContentsDestroyedBulk from './js/events/ContentsDestroyedBulk'
-import ContentDestroyed from './js/events/ContentsDestroyed'
+import ContentDestroyed from './js/events/ContentDestroyed'
 
 import ContentFieldDestroyed from './js/events/ContentFieldDestroyed'
 import ContentFieldStored from './js/events/ContentFieldStored'
