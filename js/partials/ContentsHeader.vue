@@ -18,7 +18,7 @@
 			<router-link class="dropdown-item" :to="{ name: 'contents.create', params: { id: contentId }}">
 				<i class="icon fas fa-angle-double-right has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.move_content') }}
 			</router-link>
-			<router-link class="dropdown-item" :to="{ name: 'contents.create', params: { id: contentId }}">
+			<router-link v-if="canTransform" class="dropdown-item" :to="{ name: 'contents.transform', params: { id: contentId }}">
 				<i class="icon fas fa-random has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.transform_content') }}
 			</router-link>
 			<hr class="dropdown-divider">
@@ -56,6 +56,19 @@ export default {
 		},
 		openDeleteModal(payload) {
 			Event.$emit('delete-modal-open', payload)
+		}
+	},
+	computed: {
+		canTransform() {
+			if(this.resource.ancestors != undefined && this.resource.ancestors.length > 0) {
+				const parentContentType = this.resource.ancestors[this.resource.ancestors.length - 1].content_type
+
+				if((parentContentType.allowed_children_types.includes(this.resource.content_type_id) && parentContentType.allowed_children_types.length > 1) || (!parentContentType.allowed_children_types.includes(this.resource.content_type_id) &&parentContentType.allowed_children_types.length > 0)) return true
+
+				return false
+			}
+			
+			return true
 		}
 	}
 }

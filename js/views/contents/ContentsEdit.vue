@@ -127,6 +127,10 @@ export default {
 
 		Event.$off('resource-loaded')
 		Event.$on('resource-loaded', function(data) {
+			self.schema.length = 1
+			self.translatableFields.length = 1
+			self.editingLocale = self.$root.appLocale
+
 			data.schema.schema.forEach(function(field, i) {
 				self.form.originalData[field.name] = {}
 				self.translatableFields.push(field.name)
@@ -141,7 +145,7 @@ export default {
 			}
 		})
 	},
-	destroyed() {
+	beforeDestroy() {
 		Event.$off('resource-loaded')
 	}
 }
