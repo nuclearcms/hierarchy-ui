@@ -25,6 +25,7 @@ import ContentTranslated from './js/events/ContentTranslated'
 import ContentTranslationDestroyed from './js/events/ContentTranslationDestroyed'
 import ContentsDestroyedBulk from './js/events/ContentsDestroyedBulk'
 import ContentDestroyed from './js/events/ContentDestroyed'
+import ContentDuplicated from './js/events/ContentDuplicated'
 
 import ContentFieldDestroyed from './js/events/ContentFieldDestroyed'
 import ContentFieldStored from './js/events/ContentFieldStored'
@@ -33,6 +34,7 @@ import ContentTypeDestroyed from './js/events/ContentTypeDestroyed'
 import ContentTypesDestroyedBulk from './js/events/ContentTypesDestroyedBulk'
 import ContentTypeStored from './js/events/ContentTypeStored'
 import ContentTypeUpdated from './js/events/ContentTypeUpdated'
+import ContentTypeDuplicated from './js/events/ContentTypeDuplicated'
 
 import ContentFieldsCreate from './js/views/contentfields/ContentFieldsCreate'
 import ContentFieldsEdit from './js/views/contentfields/ContentFieldsEdit'
@@ -45,7 +47,7 @@ import ContentTypesIndex from './js/views/contenttypes/ContentTypesIndex'
 export {
 	ContentsChildren, ContentsCreate, ContentsEdit, ContentsIndex, ContentsSettings, ContentsStatistics, ContentsTransform, ContentsTranslate,
 	ContentsDatable, ContentsDropdown, ContentsHeader, ContentsTags, ContentsTitle, ContentsTree, ContentsEditHelper,
-	ContentStored, ContentUpdated, ContentSettingsUpdated, ContentStateUpdated, ContentMoved, ContentTransformed, ContentTranslated, ContentTranslationDestroyed, ContentsDestroyedBulk, ContentDestroyed,
-	ContentFieldDestroyed, ContentFieldStored, ContentFieldUpdated, ContentTypeDestroyed, ContentTypesDestroyedBulk, ContentTypeStored, ContentTypeUpdated,
+	ContentStored, ContentUpdated, ContentSettingsUpdated, ContentStateUpdated, ContentMoved, ContentTransformed, ContentTranslated, ContentTranslationDestroyed, ContentsDestroyedBulk, ContentDestroyed, ContentDuplicated,
+	ContentFieldDestroyed, ContentFieldStored, ContentFieldUpdated, ContentTypeDestroyed, ContentTypesDestroyedBulk, ContentTypeStored, ContentTypeUpdated, ContentTypeDuplicated,
 	ContentFieldsCreate, ContentFieldsEdit, ContentTypesContents, ContentTypesCreate, ContentTypesEdit, ContentTypesFields, ContentTypesIndex
 }

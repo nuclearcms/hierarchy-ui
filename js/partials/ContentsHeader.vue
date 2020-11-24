@@ -15,6 +15,9 @@
 				<i class="icon fas fa-plus has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.add_child') }}
 			</router-link>
 			<hr class="dropdown-divider">
+			<a href="#" class="dropdown-item" @click.prevent="duplicate('contents/' + contentId + '/duplicate')">
+				<i class="icon fas fa-copy has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.duplicate') }}
+			</a>
 			<router-link v-if="canTransform" class="dropdown-item" :to="{ name: 'contents.transform', params: { id: contentId }}">
 				<i class="icon fas fa-random has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.transform_content') }}
 			</router-link>
@@ -53,6 +56,17 @@ export default {
 		},
 		openDeleteModal(payload) {
 			Event.$emit('delete-modal-open', payload)
+		},
+		duplicate(route) {
+			const self = this
+
+			axios.post(api_url_with_token(route))
+				.then(function(response) {
+					self.notifier.success(response.data.message)
+					router.push({ name: 'contents.edit', params: {id: response.data.payload.id} })
+					Event.$emit('content-tree-modified')
+				})
+				.catch(function(error) { assess_error(error) })
 		}
 	},
 	computed: {

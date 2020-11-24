@@ -19,6 +19,9 @@
 					<router-link :to="{name: 'contents.edit', params: {id: content.id}}" class="dropdown-item">
 						<i class="icon fas fa-edit has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.s_edit') }}
 					</router-link>
+					<a href="#" class="dropdown-item" @click.prevent="duplicate('contents/' + content.id + '/duplicate')">
+						<i class="icon fas fa-copy has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.s_duplicate') }}
+					</a>
 					<a href="#" class="dropdown-item has-color-danger" @click.prevent="openDeleteModal()">
 						<i class="icon fas fa-trash"></i> {{ trans.get('hierarchy::contents.s_delete') }}
 					</a>
@@ -56,6 +59,17 @@ export default {
 		},
 		openDeleteModal() {
 			Event.$emit('delete-modal-open', { bulk: false, route: 'contents/' + this.content.id })
+		},
+		duplicate(route) {
+			const self = this
+
+			axios.post(api_url_with_token(route))
+				.then(function(response) {
+					self.notifier.success(response.data.message)
+					router.push({ name: 'contents.edit', params: {id: response.data.payload.id} })
+					Event.$emit('content-tree-modified')
+				})
+				.catch(function(error) { assess_error(error) })
 		}
 	}
 }
