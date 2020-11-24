@@ -13,7 +13,6 @@ import ContentsHeader from './js/partials/ContentsHeader'
 import ContentsTags from './js/partials/ContentsTags'
 import ContentsTitle from './js/partials/ContentsTitle'
 import ContentsTree from './js/partials/ContentsTree'
-import ContentsMoveModal from './js/partials/ContentsMoveModal'
 import ContentsEditHelper from './js/mixins/ContentsEditHelper'
 
 import ContentStored from './js/events/ContentStored'
@@ -45,7 +44,7 @@ import ContentTypesIndex from './js/views/contenttypes/ContentTypesIndex'
 
 export {
 	ContentsChildren, ContentsCreate, ContentsEdit, ContentsIndex, ContentsSettings, ContentsStatistics, ContentsTransform, ContentsTranslate,
-	ContentsDatable, ContentsDropdown, ContentsHeader, ContentsTags, ContentsTitle, ContentsTree, ContentsMoveModal, ContentsEditHelper,
+	ContentsDatable, ContentsDropdown, ContentsHeader, ContentsTags, ContentsTitle, ContentsTree, ContentsEditHelper,
 	ContentStored, ContentUpdated, ContentSettingsUpdated, ContentStateUpdated, ContentMoved, ContentTransformed, ContentTranslated, ContentTranslationDestroyed, ContentsDestroyedBulk, ContentDestroyed,
 	ContentFieldDestroyed, ContentFieldStored, ContentFieldUpdated, ContentTypeDestroyed, ContentTypesDestroyedBulk, ContentTypeStored, ContentTypeUpdated,
 	ContentFieldsCreate, ContentFieldsEdit, ContentTypesContents, ContentTypesCreate, ContentTypesEdit, ContentTypesFields, ContentTypesIndex

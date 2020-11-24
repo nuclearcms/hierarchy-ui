@@ -15,9 +15,6 @@
 				<i class="icon fas fa-plus has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.add_child') }}
 			</router-link>
 			<hr class="dropdown-divider">
-			<router-link class="dropdown-item" :to="{ name: 'contents.create', params: { id: contentId }}">
-				<i class="icon fas fa-angle-double-right has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.move_content') }}
-			</router-link>
 			<router-link v-if="canTransform" class="dropdown-item" :to="{ name: 'contents.transform', params: { id: contentId }}">
 				<i class="icon fas fa-random has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.transform_content') }}
 			</router-link>

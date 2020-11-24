@@ -29,9 +29,6 @@
 					<a href="#" class="dropdown-item" @click.prevent="toggleContentState('is_locked', content.id)">
 						<i class="icon fas fa-lock has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.s_lock') }}
 					</a>
-						<router-link class="dropdown-item" :to="{ name: 'contents.create', params: { id: content.id }}">
-						<i class="icon fas fa-angle-double-right has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.s_move') }}
-					</router-link>
 				</div>
 				<a v-else href="#" class="dropdown-item" @click.prevent="toggleContentState('is_locked', content.id)">
 					<i class="icon fas fa-unlock has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.s_unlock') }}
