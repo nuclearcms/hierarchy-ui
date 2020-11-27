@@ -29,6 +29,7 @@
 			&::after
 				top: calc(-2rem - 3px)
 				height: 4rem
+				left: calc(-0.5rem - 2px)
 
 			&__icon
 				width: 1.5rem
@@ -156,9 +157,13 @@
 		z-index: 1
 		left: calc(-0.875rem + 1px)
 		top: -0.25rem
-		img
-			border: 2px solid $grey-light
+		img, span
+			border: 2px solid $grey-lighter
 			border-radius: 50%
+		span
+			background-color: $grey-lightest
+			display: block
+			height: 100%
 
 		@media screen and (max-width: $tablet)
 			width: 2rem

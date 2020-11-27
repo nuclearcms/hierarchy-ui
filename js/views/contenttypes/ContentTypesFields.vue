@@ -14,8 +14,8 @@
 			<div class="paper__body paper__body--noside">
 				<div class="paper__main">
 					<div class="relation-field">
-						<draggable v-if="$can('write_contenttypes')" :tag="'ul'" v-model="fields" @end="saveSortedFields" :animate="200" handle=".handle">
-							<p class="pt-xxl pb-xxl pl-md pr-md has-text-centered" v-if="fields.length == 0" v-text="trans.get('hierarchy::contenttypes.no_fields_found')"></p>
+						<p class="pt-xxl pb-xxl pl-md pr-md has-text-centered" v-if="fields.length == 0" v-text="trans.get('hierarchy::contenttypes.no_fields_found')"></p>
+						<draggable v-if="$can('write_contenttypes')" :tag="'ul'" v-model="fields" :animate="200" handle=".handle" @end="saveSortedFields">
 							<li class="related-item related-item--handled" v-for="(field, i) in fields" :key="field.id">
 								<span class="handle icon is-medium has-color-blue">
 									<i class="fas fa-grip-lines"></i>
@@ -42,7 +42,6 @@
 							</li>
 						</draggable>
 						<ul v-else>
-							<p class="pt-xxl pb-xxl pl-md pr-md has-text-centered" v-if="fields.length == 0" v-text="trans.get('hierarchy::contenttypes.no_fields_found')"></p>
 							<li class="related-item related-item--handled" v-if="fields.length > 0" v-for="(field, i) in fields" :key="field.id">
 								<router-link :to="{ name: 'contentfields.edit', params: {parent: field.content_type_id, id: field.id} }">{{ field.label }}</router-link> <span class="has-color-grey-darker">[{{ trans.get('hierarchy::contentfields.' + field.type) }}]</span>
 							</li>
@@ -64,12 +63,12 @@
 </template>
 
 <script>
-import {View, Shower, Tabs, Datable, DatableDropdown, format_date, RequiresPermissions, assess_error} from 'umomega-foundation'
+import {View, Shower, Tabs, DatableDropdown, format_date, RequiresPermissions, assess_error} from 'umomega-foundation'
 import draggable from 'vuedraggable'
 
 export default {
 	mixins: [ View, Shower, RequiresPermissions ],
-	components: { Datable, DatableDropdown, Tabs, draggable },
+	components: { DatableDropdown, Tabs, draggable },
 	data() { return {
 		titleLabel: 'hierarchy::contentfields.multiple',
 		breadcrumbs: [
@@ -101,12 +100,9 @@ export default {
 				.catch(function(error) { assess_error(error) })
 		},
 		saveSortedFields() {
-			let sorted = this.fields.map(function(f) {
-				return f.id
-			})
-			let self = this
-
-			axios.put(api_url_with_token('contenttypes/' + self.$route.params.id + '/fields/sort'), {sorted: sorted})
+			const self = this
+			
+			axios.put(api_url_with_token('contenttypes/' + self.$route.params.id + '/fields/sort'), {sorted: self.fields.map(function(f) { if(f) return f.id })})
 				.catch(function(error) { assess_error(error) })
 		},
 		openDeleteModal(payload) {

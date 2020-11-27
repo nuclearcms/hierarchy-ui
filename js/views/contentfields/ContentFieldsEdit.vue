@@ -14,7 +14,7 @@
 				</div>
 
 				<SubmitFooter v-if="$can('write_contenttypes')" :config="{icon: 'save'}" v-model="form">
-					<div class="control">
+					<div class="control" v-if="resource.content_type_id">
 						<router-link class="button icon-only is-warning" :to="{ name: 'contentfields.create', params: {id: resource.content_type_id} }">
 							<i class="icon fas fa-plus"></i>
 						</router-link>

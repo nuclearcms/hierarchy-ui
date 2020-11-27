@@ -112,7 +112,7 @@ export default {
 	}},
 	watch: {
 		resource(n) {
-			this.breadcrumbs.push({to: { name: 'contenttypes.fields', params: { id: n.id }}, text: n.name})
+			if(n.id) this.breadcrumbs.push({to: { name: 'contenttypes.fields', params: { id: n.id }}, text: n.name})
 		}
 	},
 	methods: {

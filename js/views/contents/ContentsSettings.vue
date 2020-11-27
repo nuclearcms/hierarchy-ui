@@ -140,7 +140,7 @@ export default {
 
 		Event.$off('resource-loaded')
 		Event.$on('resource-loaded', function(data) {
-			if(data.contentType.hides_children || data.hides_children) self.tabs.unshift({ route: 'contents.children', label: 'hierarchy::contents.children', active: false})
+			if(data.content_type.hides_children || data.hides_children) self.tabs.unshift({ route: 'contents.children', label: 'hierarchy::contents.children', active: false})
 		})
 	},
 	beforeDestroy() {

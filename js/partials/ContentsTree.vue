@@ -5,7 +5,8 @@
 				<span v-if="content.id == $root.store.home_content" class="content-item__icon content-item__icon content-item__icon--home"><i class="is-size-8 fas fa-home has-color-grey"></i></span>
 				<span v-else class="content-item__icon">
 					<span v-if="showsthumbnails" class="content-item__thumb">
-						<img :src="content.cover_thumbnail">
+						<img v-if="content.cover_thumbnail != null" :src="content.cover_thumbnail">
+						<span v-else></span>
 					</span>
 				</span>
 				<router-link :to="{ name: (content.hides_children || content.content_type.hides_children ? 'contents.children' : 'contents.edit'), params: {id: content.id, locale: editingLocale} }" v-text="content.title[editingLocale]" class="content-item__link"/><i v-if="content.is_locked" class="is-size-9 fas fa-lock has-color-grey-light"></i> <i v-if="content.is_sterile" class="is-size-9 far fa-dot-circle has-color-grey-light"></i>

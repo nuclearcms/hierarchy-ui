@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import {Tabs, RequiresPermissions, Translatable} from 'umomega-foundation'
+import {Tabs, RequiresPermissions, Translatable, assess_error} from 'umomega-foundation'
 import ContentsTitle from '../../partials/ContentsTitle'
 import ContentsHeader from '../../partials/ContentsHeader'
 import ContentsDatable from '../../partials/ContentsDatable'
@@ -61,7 +61,9 @@ export default {
 		if(self.resource.children_display_mode && self.resource.children_display_mode == 'tree') {
 			self.load()
 
-			Event.$on('content-tree-modified', function() {
+			Event.$on('content-tree-modified', function(data) {
+				if(data.id == self.$route.params.id) return
+
 				self.load()
 			})
 		} else {
@@ -71,7 +73,9 @@ export default {
 
 				self.load()
 
-				Event.$on('content-tree-modified', function() {
+				Event.$on('content-tree-modified', function(data) {
+					if(data.id == self.$route.params.id) return
+					
 					self.load()
 				})
 			})

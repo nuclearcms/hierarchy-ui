@@ -8,7 +8,7 @@
 		<div class="paper">
 			<ContentsHeader :permission="$can('write_contents')" :resource="resource" :editingLocale="editingLocale" :errors="form.errors" :canHaveMoreTranslations="canHaveMoreTranslations" :canDeleteCurrentTranslation="canDeleteCurrentTranslation" :contentId="contentId"/>
 
-			<form method="POST" action="/api/contents" @submit.prevent="requestUpdate('contents')" @keydown="clearError($event.target.name)" autocomplete="off">
+			<form method="POST" action="/api/contents" @submit.prevent="requestUpdate('contents')" @change="clearError($event.target.name)" autocomplete="off">
 				
 				<div class="paper__body">
 					<div class="paper__main">
@@ -34,7 +34,7 @@
 
 				<SubmitFooter v-if="$can('write_contents') && resource.is_locked == 0" :config="{icon: 'save'}" v-model="form">
 					<div class="control" v-if="contentStatus < 50">
-						<button class="button icon-only is-warning" type="submit" @click.prevent="saveAndPublish" :disabled="form.errors.anyErrors">
+						<button class="button icon-only is-warning" type="button" @click.prevent="saveAndPublish" :disabled="form.errors.anyErrors">
 							<i class="icon fas fa-check"></i>
 						</button>
 					</div>
@@ -77,8 +77,9 @@ export default {
 			{route: 'contents.statistics', label: 'hierarchy::contents.statistics', active: false},
 		],
 		translatableFields: ['title'],
-		secondaryTranslatableFields: ['meta_title', 'meta_description', 'meta_author', 'keywords'],
-		form: new Form({content_type_id: '', title: '', meta_title: '', meta_description: '', meta_author: '', keywords: '', status: 100, tags: []}),
+		secondaryTranslatableFields: ['meta_title', 'meta_description', 'author', 'keywords', 'cover_image'],
+		form: new Form({content_type_id: '', title: {}, cover_image: {}, meta_title: {}, meta_description: {}, author: {}, keywords: {}, status: 100, tags: []}),
+		preventPopulateForm: true,
 		schema: [
 			{
 				type: 'TextField',
@@ -88,6 +89,11 @@ export default {
 			}
 		],
 		schemaSecondary: [
+			{
+				type: 'MediaField',
+				name: 'cover_image',
+				label: this.$root.trans.get('validation.attributes.cover_image')
+			},
 			{
 				type: 'TextField',
 				name: 'meta_title',
@@ -105,8 +111,8 @@ export default {
 			},
 			{
 				type: 'TextField',
-				name: 'meta_author',
-				label: this.$root.trans.get('validation.attributes.meta_author')
+				name: 'author',
+				label: this.$root.trans.get('validation.attributes.author')
 			}
 		]
 	}},
@@ -125,20 +131,21 @@ export default {
 	mounted() {
 		const self = this
 
-		Event.$off('resource-loaded')
 		Event.$on('resource-loaded', function(data) {
 			self.schema.length = 1
 			self.translatableFields.length = 1
 			self.editingLocale = self.$root.appLocale
 
 			data.schema.schema.forEach(function(field, i) {
-				self.form.originalData[field.name] = {}
 				self.translatableFields.push(field.name)
-				self.form.populate(data.extensions)
 				self.schema.push(field)
 			})
+
+			// We do this so that we don't send the data from any other previous form
+			self.form.originalData = data
+			self.form.populate(data)
 			
-			if(self.resource.contentType.hides_children || self.resource.hides_children) {
+			if(data.content_type.hides_children || data.hides_children) {
 				self.tabs.unshift({ route: 'contents.children', label: 'hierarchy::contents.children', active: false})
 			} else if(self.tabs.length > 3) {
 				self.tabs.shift()

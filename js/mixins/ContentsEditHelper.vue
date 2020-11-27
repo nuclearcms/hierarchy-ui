@@ -15,16 +15,16 @@ export default {
 			return this.resource.id != undefined ? this.resource.id : 0
 		},
 		contentTypeRoute() {
-			return this.resource.id != undefined ? { name: 'contenttypes.edit', params: { id: this.resource.contentType.id }} : { name: 'contenttypes.edit', params: { id: 0 } }
+			return this.resource.id != undefined ? { name: 'contenttypes.edit', params: { id: this.resource.content_type.id }} : { name: 'contenttypes.edit', params: { id: 0 } }
 		},
 		contentTypeName() {
-			return this.resource.id != undefined ? this.resource.contentType.name : ''
+			return this.resource.id != undefined ? this.resource.content_type.name : ''
 		},
 		contentStatus() {
 			return this.resource.id != undefined ? this.resource.status : 100
 		},
 		contentTaggable() {
-			return this.resource.id != undefined ? this.resource.contentType.is_taggable : false
+			return this.resource.id != undefined ? this.resource.content_type.is_taggable : false
 		}
 	},
 	mounted() {
