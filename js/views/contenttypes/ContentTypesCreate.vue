@@ -26,7 +26,7 @@ export default {
 			{to: { name: 'contenttypes.index'}, text: this.$root.trans.get('hierarchy::contenttypes.multiple')}
 		],
 		guardedBy: 'write_contenttypes',
-		form: new Form({name: '', is_visible: true, hides_children: false, color: {hex: '#00249C'}, is_taggable: true, allowed_children_types: []}),
+		form: new Form({name: '', is_visible: true, hides_children: false, color: {hex: '#00249C'}, is_taggable: false, allowed_children_types: []}),
 		schema: [
 			{
 				type: 'TextField',
