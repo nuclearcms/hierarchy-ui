@@ -3,7 +3,6 @@ import ContentsCreate from './js/views/contents/ContentsCreate'
 import ContentsEdit from './js/views/contents/ContentsEdit'
 import ContentsIndex from './js/views/contents/ContentsIndex'
 import ContentsSettings from './js/views/contents/ContentsSettings'
-import ContentsStatistics from './js/views/contents/ContentsStatistics'
 import ContentsTransform from './js/views/contents/ContentsTransform'
 import ContentsTranslate from './js/views/contents/ContentsTranslate'
 
@@ -45,7 +44,7 @@ import ContentTypesFields from './js/views/contenttypes/ContentTypesFields'
 import ContentTypesIndex from './js/views/contenttypes/ContentTypesIndex'
 
 export {
-	ContentsChildren, ContentsCreate, ContentsEdit, ContentsIndex, ContentsSettings, ContentsStatistics, ContentsTransform, ContentsTranslate,
+	ContentsChildren, ContentsCreate, ContentsEdit, ContentsIndex, ContentsSettings, ContentsTransform, ContentsTranslate,
 	ContentsDatable, ContentsDropdown, ContentsHeader, ContentsTags, ContentsTitle, ContentsTree, ContentsEditHelper,
 	ContentStored, ContentUpdated, ContentSettingsUpdated, ContentStateUpdated, ContentMoved, ContentTransformed, ContentTranslated, ContentTranslationDestroyed, ContentsDestroyedBulk, ContentDestroyed, ContentDuplicated,
 	ContentFieldDestroyed, ContentFieldStored, ContentFieldUpdated, ContentTypeDestroyed, ContentTypesDestroyedBulk, ContentTypeStored, ContentTypeUpdated, ContentTypeDuplicated,
