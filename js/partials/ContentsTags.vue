@@ -3,7 +3,7 @@
 			axios.post(api_url_with_token('tags'), { name: vm.searchTerm, type: '' })
 			.then(function(response) { vm.add(response.data.payload) })
 			.catch(function(error) { assess_error(error) })
-	 	}}">
+	 	}}" @input="updateForm($event)">
 		<template v-slot:message="p">
 			<p class="pb-md" v-if="p.related.length == 0" v-text="trans.get('hierarchy::contents.no_tags')"></p>
 		</template>
@@ -39,6 +39,11 @@ export default {
 	props: ['readonly', 'errors', 'value'],
 	data() { return {
 		related: this.value || []
-	}}
+	}},
+	methods: {
+		updateForm(data) {
+			Event.$emit('tag-field-changed', data)
+		}
+	}
 }
 </script>

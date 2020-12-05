@@ -122,7 +122,10 @@ export default {
 	}},
 	watch: {
 		$route(to, from) {
-			if(from.params.id != to.params.id) this.loadResource()
+			if(from.params.id != to.params.id) {
+				this.loadResource()
+				window.scrollTo(0, 0)
+			}
 			if(from.params.locale != to.params.locale) this.editingLocale = to.params.locale
 		}
 	},
@@ -130,34 +133,45 @@ export default {
 		saveAndPublish() {
 			this.form.status = 50
 			this.requestUpdate('contents')
+		},
+		registerResourceLoaded(self) {
+			Event.$off('resource-loaded')
+			Event.$on('resource-loaded', function(data) {
+				self.schema.length = 1
+				self.translatableFields.length = 1
+				self.editingLocale = self.$root.appLocale
+
+				data.schema.schema.forEach(function(field, i) {
+					self.translatableFields.push(field.name)
+					self.schema.push(field)
+				})
+
+				// We do this so that we don't send the data from any other previous form
+				self.form.originalData = data
+				self.form.populate(data)
+				
+				if(data.content_type.hides_children || data.hides_children) {
+					self.tabs.unshift({ route: 'contents.children', label: 'hierarchy::contents.children', active: false})
+				} else if(self.tabs.length > 3) {
+					self.tabs.shift()
+				}
+			})
 		}
 	},
 	mounted() {
 		const self = this
 
-		Event.$on('resource-loaded', function(data) {
-			self.schema.length = 1
-			self.translatableFields.length = 1
-			self.editingLocale = self.$root.appLocale
+		Event.$on('tag-field-changed', function(data) {
+			self.$set(self.form, 'tags', data)
 
-			data.schema.schema.forEach(function(field, i) {
-				self.translatableFields.push(field.name)
-				self.schema.push(field)
-			})
-
-			// We do this so that we don't send the data from any other previous form
-			self.form.originalData = data
-			self.form.populate(data)
-			
-			if(data.content_type.hides_children || data.hides_children) {
-				self.tabs.unshift({ route: 'contents.children', label: 'hierarchy::contents.children', active: false})
-			} else if(self.tabs.length > 3) {
-				self.tabs.shift()
-			}
+			Event.$emit('input', self.form)
 		})
+
+		self.registerResourceLoaded(self)
 	},
 	beforeDestroy() {
 		Event.$off('resource-loaded')
+		Event.$off('tag-field-changed')
 	}
 }
 </script>
