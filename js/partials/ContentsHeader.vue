@@ -1,5 +1,9 @@
 <template>
 	<PaperHeader :permission="permission" :resource="resource" :editingLocale="editingLocale" :errors="errors">
+		<a v-if="resource.site_urls && resource.site_urls[editingLocale] != undefined" class="dropdown-item" :href="resource.site_urls[editingLocale] + '?preview_contents=' + resource.preview_token" target="_blank">
+			<i class="icon fas fa-eye"></i> {{ trans.get('hierarchy::contents.preview') }}
+		</a>
+		<hr class="dropdown-divider" v-if="resource.site_urls && resource.site_urls[editingLocale] != undefined">
 		<div v-if="!resource.is_locked">
 			<router-link v-if="canHaveMoreTranslations" class="dropdown-item" :to="{ name: 'contents.translate', params: {id: this.contentId} }">
 				<i class="icon fas fa-language has-color-grey-darker"></i> {{ trans.get('hierarchy::contents.translate') }}
