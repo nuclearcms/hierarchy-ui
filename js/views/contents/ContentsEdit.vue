@@ -80,8 +80,8 @@ export default {
 			{route: 'contents.statistics', label: 'hierarchy::contents.statistics', active: false},
 		],
 		translatableFields: ['title'],
-		secondaryTranslatableFields: ['meta_title', 'meta_description', 'author', 'keywords', 'cover_image'],
-		form: new Form({content_type_id: '', title: {}, cover_image: {}, meta_title: {}, meta_description: {}, author: {}, keywords: {}, status: 100, tags: []}),
+		secondaryTranslatableFields: ['meta_title', 'meta_description', 'meta_author', 'keywords', 'cover_image'],
+		form: new Form({content_type_id: '', title: {}, cover_image: {}, meta_title: {}, meta_description: {}, meta_author: {}, keywords: {}, status: 100, tags: []}),
 		preventPopulateForm: true,
 		schema: [
 			{
@@ -115,8 +115,8 @@ export default {
 			},
 			{
 				type: 'TextField',
-				name: 'author',
-				label: this.$root.trans.get('validation.attributes.author')
+				name: 'meta_author',
+				label: this.$root.trans.get('validation.attributes.meta_author')
 			}
 		]
 	}},
