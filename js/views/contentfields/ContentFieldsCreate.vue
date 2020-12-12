@@ -56,6 +56,7 @@ export default {
 						{ value: 'TextEditorField', label: this.$root.trans.get('hierarchy::contentfields.TextEditorField') },
 						{ value: 'MediaField', label: this.$root.trans.get('hierarchy::contentfields.MediaField') },
 						{ value: 'ContentRelationField', label: this.$root.trans.get('hierarchy::contentfields.ContentRelationField') },
+						{ value: 'CodeField', label: this.$root.trans.get('hierarchy::contentfields.CodeField') },
 						{ value: 'DatetimeField', label: this.$root.trans.get('hierarchy::contentfields.DatetimeField') },
 						{ value: 'CheckboxField', label: this.$root.trans.get('hierarchy::contentfields.CheckboxField') },
 						{ value: 'SelectField', label: this.$root.trans.get('hierarchy::contentfields.SelectField') },
