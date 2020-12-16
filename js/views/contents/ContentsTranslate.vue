@@ -60,7 +60,12 @@ export default {
 
 			this.breadcrumbs.push({to: { name: 'contents.edit', id: resource.id }, text: this.contentTitle })
 			const availableLocales = this.$root.appLocales.filter(n => !resource.locales.includes(n))
-			this.schemaSecondary[0].options.choices = availableLocales.map(function(locale) { return { value: locale, label: self.$root.trans.get('foundation::general.locale_' + locale) } })
+
+			const choices = availableLocales.map(function(locale) { return { value: locale, label: self.$root.trans.get('foundation::general.locale_' + locale) } })
+
+			this.schemaSecondary[0].options.choices = choices
+
+			if(choices.length == 1) this.form['locale'] = choices[0].value
 		}
 	}
 }

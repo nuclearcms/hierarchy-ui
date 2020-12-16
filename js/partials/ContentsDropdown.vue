@@ -1,5 +1,5 @@
 <template>
-	<div class="dropdown is-hoverable is-right" v-if="can">
+	<div class="dropdown contents-dropdown is-hoverable is-right" v-if="can">
 		<div class="dropdown-trigger">
 			<slot name="trigger">
 				<button class="button is-compact is-borderless" aria-haspopup="true">

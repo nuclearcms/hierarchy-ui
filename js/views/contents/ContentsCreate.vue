@@ -72,7 +72,9 @@ export default {
 			axios.get(api_url_with_token(route))
 				.then(function(response) {
 					self.isLoaded = true
+
 					self.breadcrumbs.length = 1
+					self.breadcrumbs.push() // This one is to trigger reactivity
 
 					if(response.data.action == 'populate')
 					{
@@ -80,9 +82,17 @@ export default {
 							self.breadcrumbs.push({to: { name: 'contents.edit', params: {id: self.$route.params.parent }}, text: response.data.parent.title[self.$root.appLocale] })
 						}
 
-						self.schema[1].options.choices = response.data.types.map(function(t) {
+						const choices = response.data.types.map(function(t) {
 							return { value: t.id, label: t.name }
 						})
+
+						self.schema[1].options.choices = choices
+
+						if(choices.length == 1) {
+							self.form['content_type_id'] = choices[0].value
+						} else {
+							self.form['content_type_id'] = ''
+						}
 					} else if(response.data.action == 'redirect')
 					{
 						self.notifier.danger(response.data.message)
@@ -94,7 +104,9 @@ export default {
 	},
 	watch: {
 		$route(to, from) {
-			if(from.params.parent != to.params.parent) this.loadPrecreate()
+			if(from.params.parent != to.params.parent) {
+				this.loadPrecreate()
+			}
 		}
 	},
 };

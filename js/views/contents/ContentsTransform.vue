@@ -73,9 +73,13 @@ export default {
 
 					if(response.data.action == 'populate')
 					{
-						self.schema[0].options.choices = response.data.types.map(function(t) {
+						const choices = response.data.types.map(function(t) {
 							return { value: t.id, label: t.name }
 						})
+
+						self.schema[0].options.choices = choices
+
+						if(choices.length == 1) self.form['content_type_id'] = choices[0].value
 					} else if(response.data.action == 'redirect')
 					{
 						self.notifier.danger(response.data.message)
