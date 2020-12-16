@@ -150,7 +150,7 @@ export default {
 				self.form.originalData = data
 				self.form.populate(data)
 				
-				if((data.content_type.hides_children || data.hides_children) && self.tabls.length == 3) {
+				if((data.content_type.hides_children || data.hides_children) && self.tabs.length == 3) {
 					self.tabs.unshift({ route: 'contents.children', label: 'hierarchy::contents.children', active: false})
 				} else if(self.tabs.length > 3) {
 					self.tabs.shift()
