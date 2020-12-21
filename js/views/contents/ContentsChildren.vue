@@ -87,7 +87,7 @@ export default {
 	methods: {
 		load() {
 			const self = this
-
+			
 			axios.get(api_url_with_token('contents/' + self.$route.params.id + '/children'))
 				.then(function(response) {
 					self.contents = response.data

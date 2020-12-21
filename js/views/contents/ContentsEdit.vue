@@ -139,7 +139,7 @@ export default {
 			Event.$on('resource-loaded', function(data) {
 				self.schema.length = 1
 				self.translatableFields.length = 1
-				self.editingLocale = self.$root.appLocale
+				self.editingLocale = (self.$route.params.locale != undefined ? self.$route.params.locale : self.$root.appLocale)
 
 				data.schema.schema.forEach(function(field, i) {
 					self.translatableFields.push(field.name)
@@ -152,7 +152,7 @@ export default {
 				
 				if((data.content_type.hides_children || data.hides_children) && self.tabs.length == 3) {
 					self.tabs.unshift({ route: 'contents.children', label: 'hierarchy::contents.children', active: false})
-				} else if(self.tabs.length > 3) {
+				} else if((!data.content_type.hides_children && !data.hides_children) && self.tabs.length > 3) {
 					self.tabs.shift()
 				}
 			})
