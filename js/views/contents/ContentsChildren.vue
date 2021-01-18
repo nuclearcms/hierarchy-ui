@@ -88,6 +88,8 @@ export default {
 		load() {
 			const self = this
 			
+			if(self.$route.params.id == undefined) return
+
 			axios.get(api_url_with_token('contents/' + self.$route.params.id + '/children'))
 				.then(function(response) {
 					self.contents = response.data
