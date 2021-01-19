@@ -61,6 +61,7 @@ export default {
 						{ value: 'CheckboxField', label: this.$root.trans.get('hierarchy::contentfields.CheckboxField') },
 						{ value: 'SelectField', label: this.$root.trans.get('hierarchy::contentfields.SelectField') },
 						{ value: 'NumberField', label: this.$root.trans.get('hierarchy::contentfields.NumberField') },
+						{ value: 'RangeField', label: this.$root.trans.get('hierarchy::contentfields.RangeField') },
 						{ value: 'ColorField', label: this.$root.trans.get('hierarchy::contentfields.ColorField') },
 						{ value: 'PasswordField', label: this.$root.trans.get('hierarchy::contentfields.PasswordField') },
 						{ value: 'RelationField', label: this.$root.trans.get('hierarchy::contentfields.RelationField') },
