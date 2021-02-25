@@ -88,6 +88,10 @@
 		vertical-align: bottom
 		cursor: move
 
+		& > *
+			pointer-events: none
+			user-select: none
+
 		&::after, &::before
 			+pseudo-block
 			width: 0.75rem
@@ -190,7 +194,7 @@
 		opacity: 0.4
 
 	& > .content-item:last-child > .contents-tree::before
-			display: none
+		display: none
 
 	.contents-tree
 		position: relative
