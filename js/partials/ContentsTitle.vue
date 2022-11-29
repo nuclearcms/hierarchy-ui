@@ -1,9 +1,9 @@
 <template>
 	<div class="has-text-centered mb-lg">
-		<div v-if="resource.ancestors != undefined && resource.ancestors.length > 0" class="mb-xl">
+		<div v-if="resource.ancestors_filtered != undefined && resource.ancestors_filtered.length > 0" class="mb-xl">
 			<p class="is-size-9 has-text-weight-bold has-color-grey-darker is-uppercase mb-xxs" v-text="trans.get('hierarchy::contents.ancestors')"></p>
 			<div>
-				<span v-for="(ancestor, index) in resource.ancestors" :key="index">
+				<span v-for="(ancestor, index) in resource.ancestors_filtered" :key="index">
 					<span v-if="index != 0">&nbsp;<i class="has-color-grey-light icon fas fa-long-arrow-alt-right"></i></span>
 					<router-link :to="{ name: (ancestor.hides_children || ancestor.content_type.hides_children ? 'contents.children' : 'contents.edit'), params: {id: ancestor.id} }" v-text="ancestor.title[$root.appLocale]"></router-link>
 				</span>

@@ -1,6 +1,6 @@
 {
     "name": "nuclear-hierarchy-ui",
-    "version": "1.6.0",
+    "version": "1.6.1",
     "description": "Hierarchy UI Components For the Nuclear CMS",
     "sass": "hierarchy-ui.sass",
     "main": "hierarchy-ui.js",
