@@ -79,9 +79,9 @@ export default {
 			{route: 'contents.settings', label: 'hierarchy::contents.settings', active: false},
 			{route: 'contents.statistics', label: 'hierarchy::contents.statistics', active: false},
 		],
-		translatableFields: ['title'],
+		translatableFields: ['title', 'slug'],
 		secondaryTranslatableFields: ['meta_title', 'meta_description', 'meta_author', 'keywords', 'cover_image'],
-		form: new Form({content_type_id: '', title: {}, cover_image: {}, meta_title: {}, meta_description: {}, meta_author: {}, keywords: {}, status: 100, tags: []}),
+		form: new Form({content_type_id: '', title: {}, slug: {}, cover_image: {}, meta_title: {}, meta_description: {}, meta_author: {}, keywords: {}, status: 100, tags: []}),
 		preventPopulateForm: true,
 		schema: [
 			{
@@ -89,6 +89,11 @@ export default {
 				name: 'title',
 				label: this.$root.trans.get('validation.attributes.title'),
 				options: {required: true}
+			},
+			{
+				type: 'TextField',
+				name: 'slug',
+				label: this.$root.trans.get('validation.attributes.slug')
 			}
 		],
 		schemaSecondary: [
@@ -137,8 +142,8 @@ export default {
 		registerResourceLoaded(self) {
 			Event.$off('resource-loaded')
 			Event.$on('resource-loaded', function(data) {
-				self.schema.length = 1
-				self.translatableFields.length = 1
+				self.schema.length = 2
+				self.translatableFields.length = 2
 				self.editingLocale = (self.$route.params.locale != undefined ? self.$route.params.locale : self.$root.appLocale)
 
 				data.schema.schema.forEach(function(field, i) {

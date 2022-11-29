@@ -117,6 +117,7 @@ export default {
         hides_children: false,
         priority: 1,
         published_at: null,
+        unpublished_at: null,
         children_display_mode: "list",
         status: 100,
       }),
@@ -153,6 +154,11 @@ export default {
             name: "published_at",
             label: this.$root.trans.get("validation.attributes.published_at"),
             options: { required: true },
+          },
+          {
+            type: "DatetimeField",
+            name: "unpublished_at",
+            label: this.$root.trans.get("validation.attributes.unpublished_at")
           },
           {
             type: "SelectField",
