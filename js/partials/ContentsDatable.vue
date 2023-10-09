@@ -27,7 +27,7 @@
 		</template>
 
 		<template v-slot:default="slotProps">
-			<td><router-link :to="{ name: (slotProps.row.hides_children || slotProps.row.content_type.hides_children ? 'contents.children' : 'contents.edit'), params: {id: slotProps.row.id} }" v-text="editingLocale && slotProps.row.title[editingLocale] ? slotProps.row.title[editingLocale] : slotProps.row.title[$root.appLocale]" /></td>
+			<td><router-link :to="{ name: (slotProps.row.hides_children || slotProps.row.content_type.hides_children ? 'contents.children' : 'contents.edit'), params: {id: slotProps.row.id} }" v-text="editingLocale && slotProps.row.title[editingLocale] ? slotProps.row.title[editingLocale] : slotProps.row.title[$root.appLocale]" /> <i :class="slotProps.row.is_published ? 'icon fas fa-history has-color-grey-darker' : 'icon fas fa-check has-color-grey-darker'"></i></td>
 			<td><router-link class="is-size-7" v-if="$can('read_contenttypes')" :to="{ name: 'contenttypes.edit', params: { id: slotProps.row.content_type_id }}" v-text="slotProps.row.content_type.name"/><span class="is-size-7 has-text-grey-darker" v-else v-text="slotProps.row.content_type.name"></span></td>
 			<td><span class="is-size-7" v-text="makeReadableDate(slotProps.row.published_at)"></span></td>
 			<td><span class="is-size-7" v-text="makeReadableDate(slotProps.row.created_at)"></span></td>

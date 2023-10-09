@@ -9,7 +9,7 @@
 						<span v-else></span>
 					</span>
 				</span>
-				<router-link :to="{ name: (content.hides_children || content.content_type.hides_children ? 'contents.children' : 'contents.edit'), params: {id: content.id, locale: editingLocale} }" v-text="content.title[editingLocale]" class="content-item__link"/><i v-if="content.is_locked" class="is-size-9 fas fa-lock has-color-grey-light"></i> <i v-if="content.is_sterile" class="is-size-9 far fa-dot-circle has-color-grey-light"></i>
+				<router-link :to="{ name: (content.hides_children || content.content_type.hides_children ? 'contents.children' : 'contents.edit'), params: {id: content.id, locale: editingLocale} }" v-text="content.title[editingLocale]" class="content-item__link"/><i v-if="content.is_locked" class="is-size-9 fas fa-lock has-color-grey-light"></i> <i v-if="content.is_sterile" class="is-size-9 far fa-dot-circle has-color-grey-light"></i> <i :class="content.is_published ? 'icon fas fa-history has-color-grey-darker' : 'icon fas fa-check has-color-grey-darker'"></i>
 				<div class="content-item__options">
 					<ContentsDropdown :can="can" :content="content">
 						<template v-slot:trigger>
